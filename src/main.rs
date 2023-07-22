@@ -3,11 +3,11 @@ mod functions;
 
 use args::Args;
 use clap::Parser;
+use rand::random;
 use functions::{
     ConvertToSets,
-    Sets,
+    Set,
 };
-use rand::random;
 
 fn main() {
     let args = Args::parse();
@@ -15,15 +15,12 @@ fn main() {
     let mut password = String::new();
     for _ in 0..args.length {
         let set = &sets[random::<usize>() % sets.len()];
-        password.push(match set {
-            Sets::Lowercase => (random::<u8>() % 26 + b'a') as char,
-            Sets::Uppercase => (random::<u8>() % 26 + b'A') as char,
-            Sets::Digits => (random::<u8>() % 10 + b'0') as char,
-            Sets::Symbols => {
-                let symbols = b"!@#$%^&*()_+-=[]{};':\",./<>?`~";
-                symbols[random::<usize>() % symbols.len()] as char
-            }
-        });
+        password.push(
+            Set::get_chars(set)
+                .chars()
+                .nth(random::<usize>() % Set::get_chars(set).len())
+                .unwrap()
+        );
     }
-    println!("{}", password);
+    println!("{password}");
 }
