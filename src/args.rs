@@ -1,7 +1,8 @@
-/// This file contains the logic for handling the command line arguments.
+//! This file contains the logic for handling the command line arguments.
 
 use clap::Parser;
 
+/// A struct representing the command line arguments.
 #[derive(Parser, Debug)]
 #[command(
     name = "pwd-gen",

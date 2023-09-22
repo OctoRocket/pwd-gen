@@ -1,5 +1,5 @@
-/// This file contains all the functions used in the program.
-/// This file is used to keep the main file clean.
+//! This file contains all the functions used in the program.
+//! This file is used to keep the main file clean.
 
 /// This trait is used to convert a set of characters into a vector of Sets.
 pub trait ConvertToSets {

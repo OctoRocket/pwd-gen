@@ -1,3 +1,11 @@
+#[deny(
+    clippy::all,
+    clippy::pedantic,
+)]
+#[warn(
+    clippy::nursery,
+    clippy::cargo,
+)]
 mod args;
 mod functions;
 
